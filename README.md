@@ -21,7 +21,7 @@
 <table>
 <tr>
 <td width="100%" style="border: 2px solid #2c3e50; padding: 15px; background-color: #f8f9fa;">
-  <b>📊 1. ПОДГОТОВКА ДАННЫХ</b><br><br>
+  <b>  1. ПОДГОТОВКА ДАННЫХ</b><br><br>
   • Получение готового датасета лигандов для AmpC β-лактамазы<br>
   • Проверка качества данных и валидация SMILES<br>
   • Очистка от дубликатов и некорректных структур<br>
@@ -30,12 +30,14 @@
 </tr>
 <tr>
 <td width="100%" style="border: 2px solid #2c3e50; padding: 15px; background-color: #f8f9fa; margin-top: 10px;">
-  <b>🤖 2. ОБУЧЕНИЕ РЕГРЕССИОННЫХ МОДЕЛЕЙ</b><br><br>
+  <b>  2. ОБУЧЕНИЕ РЕГРЕССИОННЫХ МОДЕЛЕЙ</b><br><br>
   • Использование готовых дескрипторов из датасета<br>
   • Сравнение алгоритмов:<br>
   &nbsp;&nbsp;- Random Forest<br>
   &nbsp;&nbsp;- XGBoost<br>
   &nbsp;&nbsp;- CatBoost<br>
+  &nbsp;&nbsp;- Xgboost<br>
+  &nbsp;&nbsp;- Lightgbm<br>
   • Разбиение данных: 80% train / 20% test<br>
   • Кросс-валидация (5-fold) для оптимизации гиперпараметров<br>
   • Выбор лучшей модели для суррогатных предсказаний
@@ -43,7 +45,7 @@
 </tr>
 <tr>
 <td width="100%" style="border: 2px solid #2c3e50; padding: 15px; background-color: #f8f9fa; margin-top: 10px;">
-  <b>🧠 3. RL-ГЕНЕРАЦИЯ НОВЫХ МОЛЕКУЛ</b><br><br>
+  <b>  3. RL-ГЕНЕРАЦИЯ НОВЫХ МОЛЕКУЛ</b><br><br>
   • Использование суррогатной модели как reward function<br>
   • Направленный поиск в химическом пространстве<br>
   • Генерация новых структур с улучшенными свойствами
@@ -51,7 +53,7 @@
 </tr>
 <tr>
 <td width="100%" style="border: 2px solid #2c3e50; padding: 15px; background-color: #f8f9fa; margin-top: 10px;">
-  <b>🔬 4. ОЦЕНКА СГЕНЕРИРОВАННЫХ МОЛЕКУЛ</b><br><br>
+  <b>  4. ОЦЕНКА СГЕНЕРИРОВАННЫХ МОЛЕКУЛ</b><br><br>
   • Многоуровневая фильтрация (Lipinski, BBB, Brenk, QED, SAscore)<br>
   • Молекулярный докинг с AmpC β-лактамазой (AutoDock Vina)<br>
   • Оценка качества генеративного пайплайна
