@@ -1,0 +1,8 @@
+{
+  "fingerprint_type": "rdk",
+  "minPath": 1,
+  "maxPath": 7,
+  "nBits": 2048,
+  "nBitsPerHash": 2,
+  "use_descriptors": false
+}
