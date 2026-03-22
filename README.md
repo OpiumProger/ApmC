@@ -38,7 +38,7 @@
   &nbsp;&nbsp;- CatBoost<br>
   &nbsp;&nbsp;- Xgboost<br>
   &nbsp;&nbsp;- Lightgbm<br>
-  • Разбиение данных: 80% train / 20% test<br>
+  • Разбиение данных: с помощью scaffold split
   • Кросс-валидация (5-fold) для оптимизации гиперпараметров<br>
   • Выбор лучшей модели для суррогатных предсказаний
 </td>
