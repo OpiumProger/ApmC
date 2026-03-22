@@ -1,0 +1,36 @@
+run_type = "staged_learning"
+device = "cuda:0"
+tb_logdir = "tb_logs"
+json_out_config = "_reinvent_run.json"
+
+[parameters]
+summary_csv_prefix = "qsar_extproc"
+use_checkpoint = false
+prior_file = "C:/Users/norep/Desktop/hakaton/2_stage/priors/reinvent.prior"
+agent_file = "C:/Users/norep/Desktop/hakaton/2_stage/priors/reinvent.prior"
+
+[learning_strategy]
+type = "dap"
+sigma = 128
+rate = 0.0001
+
+[[stage]]
+chkpt_file = "stage1.chkpt"
+max_steps = 300
+max_score = 0.75
+
+[stage.scoring]
+type = "geometric_mean"
+parallel = 1
+
+[[stage.scoring.component]]
+[stage.scoring.component.ExternalProcess]
+
+  [[stage.scoring.component.ExternalProcess.endpoint]]
+  name = "QSAR_penalized"
+  weight = 1.0
+
+  params.executable = "E:/conda/envs/reinvent4/python.exe"
+  params.args = "-u C:/Users/norep/Desktop/hakaton/score.py"
+  params.property = "predictions"
+

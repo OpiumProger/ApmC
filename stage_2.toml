@@ -1,0 +1,67 @@
+run_type = "reinforcement_learning"
+device = "cuda:0"
+tb_logdir = "tb_stage2_docking"
+json_out_config = "_stage2_docking.json"
+
+[parameters]
+summary_csv_prefix = "stage2_docking"
+use_checkpoint = true
+purge_memories = false
+
+[parameters.reinforcement_learning]
+prior_file = "priors/reinvent.prior"
+agent_file = "2_stage/models/stage1.chkpt"
+
+n_steps = 100
+batch_size = 8
+sigma = 128
+learning_rate = 0.0001
+
+[parameters.reinforcement_learning.randomize_smiles]
+enabled = true
+
+[parameters.reinforcement_learning.inception]
+memory_size = 30
+sample_size = 5
+
+[parameters.reinforcement_learning.diversity_filter]
+type = "IdenticalMurckoScaffold"
+bucket_size = 25
+minscore = 0.25
+minsimilarity = 0.4
+
+[parameters.reinforcement_learning.scoring_function]
+type = "geometric_mean"
+
+[[parameters.reinforcement_learning.scoring_function.components]]
+name = "docking"
+weight = 5.0
+component_type = "external_process"
+
+[parameters.reinforcement_learning.scoring_function.components.specific_parameters]
+executable = "python"
+args = ["score_qvina.py"]
+
+[parameters.reinforcement_learning.scoring_function.components.transform]
+transformation_type = "reverse_sigmoid"
+high = -6.0
+low = -9.5
+k = 0.3
+
+[[parameters.reinforcement_learning.scoring_function.components]]
+name = "qed"
+weight = 1.0
+component_type = "qed"
+
+[[parameters.reinforcement_learning.scoring_function.components]]
+name = "alerts"
+weight = 1.0
+component_type = "custom_alerts"
+
+[parameters.reinforcement_learning.scoring_function.components.specific_parameters]
+smiles = [
+  "[N+](=O)[O-]",
+  "[SH]",
+  "[S-]",
+  "[O-][O-]"
+]
