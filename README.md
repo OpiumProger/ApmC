@@ -36,10 +36,8 @@
   &nbsp;&nbsp;- Random Forest<br>
   &nbsp;&nbsp;- XGBoost<br>
   &nbsp;&nbsp;- CatBoost<br>
-  &nbsp;&nbsp;- Xgboost<br>
   &nbsp;&nbsp;- Lightgbm<br>
   • Разбиение данных: с помощью scaffold split
-  • Кросс-валидация (5-fold) для оптимизации гиперпараметров<br>
   • Выбор лучшей модели для суррогатных предсказаний
 </td>
 </tr>
@@ -54,7 +52,7 @@
 <tr>
 <td width="100%" style="border: 2px solid #2c3e50; padding: 15px; background-color: #f8f9fa; margin-top: 10px;">
   <b>  4. ОЦЕНКА СГЕНЕРИРОВАННЫХ МОЛЕКУЛ</b><br><br>
-  • Многоуровневая фильтрация (Lipinski, BBB, Brenk, QED, SAscore)<br>
+  • Многоуровневая фильтрация (Фильтр Brenk, LogP, Коэффициент Tanimoto, QED, SAscore)<br>
   • Молекулярный докинг с AmpC β-лактамазой (AutoDock Vina)<br>
   • Оценка качества генеративного пайплайна
 </td>
